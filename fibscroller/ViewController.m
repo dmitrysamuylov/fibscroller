@@ -24,7 +24,7 @@
     
     for(int i = 0; i < 15; i++)
     {
-        [self addFibbonacciNumberFromIndex:(NSInteger)i];
+        [self addFibonacciNumberFromIndex:(NSInteger)i];
     }
     
     [_table reloadData];
@@ -59,7 +59,7 @@
 {
     // we don't have a number for this index yet, generate a batch
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        [self addFibbonacciNumberFromIndex:(NSInteger)_numbers.count-1];
+        [self addFibonacciNumberFromIndex:(NSInteger)_numbers.count-1];
         
         dispatch_sync(dispatch_get_main_queue(), ^{
             [_table reloadData];
@@ -69,7 +69,7 @@
 
 #pragma mark - private methods
 
--(void)addFibbonacciNumberFromIndex:(NSInteger)index
+-(void)addFibonacciNumberFromIndex:(NSInteger)index
 {
     if (index == 0)
     {
@@ -86,10 +86,7 @@
     JKBigInteger *current = [_numbers objectAtIndex:(int)index - 1];
     JKBigInteger *fibbnumber = nil;
     
-    fibbnumber = [previous add:current];
-    previous = current;
-    current = fibbnumber;
-    
+    fibbnumber = [previous add:current];    
     [_numbers addObject:fibbnumber];
 }
 
